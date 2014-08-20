@@ -8,8 +8,6 @@ say = (str) ->
   voices = speechSynthesis.getVoices()
 
   jp_voice = _.find voices, (v) -> v.lang is "ja-JP"
-  console.log jp_voice
-
   msg.voice = jp_voice
   msg.text = str
   speechSynthesis.speak msg
