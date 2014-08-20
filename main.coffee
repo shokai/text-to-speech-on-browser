@@ -24,3 +24,4 @@ $ ->
   $("#btn_say").on 'click', ->
     say $('#text').val()
 
+  say 'こんにちは'
