@@ -9,7 +9,7 @@ say = (str) ->
 
   msg = new SpeechSynthesisUtterance
   voices = speechSynthesis.getVoices()
-  jp_voice = _.find voices, (v) -> v.lang is "ja-JP"
+  jp_voice = _.find voices, (v) -> /ja[-_]JP/.test v.lang
 
   if jp_voice
     log "say #{str} (#{jp_voice?.name})"
