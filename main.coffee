@@ -3,10 +3,11 @@ log = (msg) ->
 
 
 say = (str) ->
-  unless msg = new SpeechSynthesisUtterance
+  if typeof SpeechSynthesisUtterance isnt 'function'
     log "your browser does not support text-to-speech API"
     return
 
+  msg = new SpeechSynthesisUtterance
   voices = speechSynthesis.getVoices()
   jp_voice = _.find voices, (v) -> v.lang is "ja-JP"
 
