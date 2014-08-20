@@ -3,12 +3,14 @@ log = (msg) ->
 
 
 say = (str) ->
-  console.log "say #{str}"
+  log str
   msg = new SpeechSynthesisUtterance
   voices = speechSynthesis.getVoices()
 
-  msg.voice = voices[10]
-  msg.lang = voices[10].lang
+  jp_voice = _.find voices, (v) -> v.lang is "ja-JP"
+  console.log jp_voice
+
+  msg.voice = jp_voice
   msg.text = str
   speechSynthesis.speak msg
 
