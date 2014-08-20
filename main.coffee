@@ -3,7 +3,7 @@ log = (msg) ->
 
 
 say = (str) ->
-  if typeof SpeechSynthesisUtterance isnt 'function'
+  unless SpeechSynthesisUtterance
     log "your browser does not support text-to-speech API"
     return
 
