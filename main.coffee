@@ -9,11 +9,12 @@ say = (str) ->
 
   voices = speechSynthesis.getVoices()
   jp_voice = _.find voices, (v) -> v.lang is "ja-JP"
-  unless jp_voice
-    log "say failed (japanese voice not found)"
-    return
 
-  log "say #{str} (#{jp_voice.name})"
+  if jp_voice
+    log "say #{str} (#{jp_voice?.name})"
+  else
+    log "say #{str}"
+
   msg.voice = jp_voice
   msg.text = str
   speechSynthesis.speak msg
